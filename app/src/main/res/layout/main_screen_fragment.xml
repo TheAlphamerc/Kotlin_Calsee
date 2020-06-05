@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".mainFragment">
 
+<layout>
+
+    <data>
+
+        <variable
+            name="MainScreenViewModel"
+            type="com.thealphamerc.kotlin_calsee.MainScreenViewModel" />
+
+    </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/black"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:context=".MainScreen">
 
         <TextView
             android:id="@+id/tvExpression"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:textColor="@color/actionButton"
             android:layout_gravity="end"
             android:ellipsize="start"
             android:singleLine="true"
+            android:textColor="@color/actionButton"
             android:textSize="40sp" />
 
 
@@ -28,11 +33,12 @@
             android:id="@+id/tvResult"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:textColor="@color/white"
             android:layout_gravity="end"
             android:ellipsize="end"
             android:singleLine="true"
-            android:textSize="30sp"/>
+            android:text="@{MainScreenViewModel.numericValue}"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
 
 
         <LinearLayout
@@ -45,15 +51,18 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/tvClear"
                     style="@style/ActionButtonStyle"
-                    android:text="@string/clear"/>
+                    android:onClick='@{() -> MainScreenViewModel.onclearRsult()}'
+                    android:text="@string/clear" />
 
                 <TextView
                     android:id="@+id/tvDivide"
                     style="@style/ActionButtonStyle"
-                    android:text="@string/devide_symbol"/>
+                    android:onClick='@{() -> MainScreenViewModel.onAirthmaticSymbolTap("/")}'
+                    android:text="@string/devide_symbol" />
 
 
             </LinearLayout>
@@ -67,22 +76,26 @@
                 <TextView
                     android:id="@+id/tvSeven"
                     style="@style/NumberButtonStyle"
-                    android:text="@string/_7"/>
+                    android:onClick="@{() -> MainScreenViewModel.onNoTap(7)}"
+                    android:text="@string/_7" />
 
                 <TextView
                     android:id="@+id/tvEight"
                     style="@style/NumberButtonStyle"
-                    android:text="@string/_8"/>
+                    android:onClick="@{() -> MainScreenViewModel.onNoTap(8)}"
+                    android:text="@string/_8" />
 
                 <TextView
                     android:id="@+id/tvNine"
                     style="@style/NumberButtonStyle"
-                    android:text="@string/_9"/>
+                    android:onClick="@{() -> MainScreenViewModel.onNoTap(9)}"
+                    android:text="@string/_9" />
 
                 <TextView
                     android:id="@+id/tvMul"
                     style="@style/NumberActionButton2"
-                    android:text="@string/multiply_symbol"/>
+                    android:onClick='@{() -> MainScreenViewModel.onAirthmaticSymbolTap("*")}'
+                    android:text="@string/multiply_symbol" />
 
             </LinearLayout>
 
@@ -95,22 +108,26 @@
                 <TextView
                     android:id="@+id/tvFour"
                     style="@style/NumberButtonStyle"
-                    android:text="@string/_4"/>
+                    android:onClick="@{() -> MainScreenViewModel.onNoTap(4)}"
+                    android:text="@string/_4" />
 
                 <TextView
                     android:id="@+id/tvFive"
                     style="@style/NumberButtonStyle"
-                    android:text="@string/_5"/>
+                    android:onClick="@{() -> MainScreenViewModel.onNoTap(5)}"
+                    android:text="@string/_5" />
 
                 <TextView
                     android:id="@+id/tvSix"
                     style="@style/NumberButtonStyle"
-                    android:text="@string/_6"/>
+                    android:onClick="@{() -> MainScreenViewModel.onNoTap(6)}"
+                    android:text="@string/_6" />
 
                 <TextView
                     android:id="@+id/tvMinus"
                     style="@style/NumberActionButton2"
-                    android:text="@string/minus_symbol"/>
+                    android:onClick='@{() -> MainScreenViewModel.onAirthmaticSymbolTap("-")}'
+                    android:text="@string/minus_symbol" />
 
 
             </LinearLayout>
@@ -124,22 +141,26 @@
                 <TextView
                     android:id="@+id/tvOne"
                     style="@style/NumberButtonStyle"
-                    android:text="@string/_1"/>
+                    android:onClick="@{() -> MainScreenViewModel.onNoTap(1)}"
+                    android:text="@string/_1" />
 
                 <TextView
                     android:id="@+id/tvTwo"
                     style="@style/NumberButtonStyle"
-                    android:text="@string/_2"/>
+                    android:onClick="@{() -> MainScreenViewModel.onNoTap(2)}"
+                    android:text="@string/_2" />
 
                 <TextView
                     android:id="@+id/tvThree"
                     style="@style/NumberButtonStyle"
-                    android:text="@string/_3"/>
+                    android:onClick="@{() -> MainScreenViewModel.onNoTap(3)}"
+                    android:text="@string/_3" />
 
                 <TextView
                     android:id="@+id/tvPlus"
                     style="@style/NumberActionButton2"
-                    android:text="@string/plus_symbol"/>
+                    android:onClick='@{() -> MainScreenViewModel.onAirthmaticSymbolTap("+")}'
+                    android:text="@string/plus_symbol" />
 
 
             </LinearLayout>
@@ -153,22 +174,26 @@
                 <TextView
                     android:id="@+id/tvDot"
                     style="@style/NumberButtonStyle"
-                    android:text="@string/dot_symbol"/>
+                    android:onClick="@{() -> MainScreenViewModel.onDecimalnoTap()}"
+                    android:text="@string/dot_symbol" />
 
                 <TextView
                     android:id="@+id/tvZero"
                     style="@style/NumberButtonStyle"
-                    android:text="@string/_0"/>
+                    android:onClick="@{() -> MainScreenViewModel.onNoTap(0)}"
+                    android:text="@string/_0" />
 
                 <TextView
                     android:id="@+id/tvBack"
                     style="@style/NumberButtonStyle"
-                    android:text="@string/del"/>
+                    android:onClick='@{() -> MainScreenViewModel.onDeletenoTap()}'
+                    android:text="@string/del" />
 
                 <TextView
                     android:id="@+id/tvEquals"
                     style="@style/EqualButtonStyle"
-                    android:text="@string/equal_symbol"/>
+                    android:onClick='@{() -> MainScreenViewModel.onCalculateResult()}'
+                    android:text="@string/equal_symbol" />
 
 
             </LinearLayout>
@@ -177,6 +202,6 @@
 
 
     </LinearLayout>
+</layout>
 
 
-</FrameLayout>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Kotlin_Calsee</string>
+    <string name="app_name">Calculator</string>
     <string name="clear">CLEAR</string>
     <string name="devide_symbol">/</string>
     <string name="_7">7</string>
