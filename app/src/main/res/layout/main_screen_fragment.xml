@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -10,23 +11,31 @@
 
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/black"
         android:orientation="vertical"
         tools:context=".MainScreen">
 
-        <TextView
-            android:id="@+id/tvExpression"
+        <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_gravity="end"
-            android:ellipsize="start"
-            android:singleLine="true"
-            android:textColor="@color/actionButton"
-            android:textSize="40sp" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill">
+
+
+            <TextView
+                android:id="@+id/tvExpression"
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:layout_gravity="start"
+                android:ellipsize="start"
+                android:singleLine="true"
+                android:text="@{MainScreenViewModel.expressionValue}"
+                android:textColor="@color/actionButton"
+                android:textSize="40sp" />
+
+        </HorizontalScrollView>
 
 
         <TextView
@@ -55,7 +64,7 @@
                 <TextView
                     android:id="@+id/tvClear"
                     style="@style/ActionButtonStyle"
-                    android:onClick='@{() -> MainScreenViewModel.onclearRsult()}'
+                    android:onClick='@{() -> MainScreenViewModel.onclearResult()}'
                     android:text="@string/clear" />
 
                 <TextView
@@ -174,7 +183,7 @@
                 <TextView
                     android:id="@+id/tvDot"
                     style="@style/NumberButtonStyle"
-                    android:onClick="@{() -> MainScreenViewModel.onDecimalnoTap()}"
+                    android:onClick="@{() -> MainScreenViewModel.onDecimalButtonTap()}"
                     android:text="@string/dot_symbol" />
 
                 <TextView
@@ -186,7 +195,7 @@
                 <TextView
                     android:id="@+id/tvBack"
                     style="@style/NumberButtonStyle"
-                    android:onClick='@{() -> MainScreenViewModel.onDeletenoTap()}'
+                    android:onClick='@{() -> MainScreenViewModel.onDeleteButtonTap()}'
                     android:text="@string/del" />
 
                 <TextView
